@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Factura de Restaurante - Componente Web</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main class="factura-contenedor">
+            <!-- ENCABEZADO -->
+            <header class="factura-header">
+                <h1>Restaurante Riwi</h1>
+                <div class="datos-factura">
+                    <p><strong>Fecha:</strong> 2026-11-06</p>
+                    <p><strong>Mesero:</strong> Sistema</p>
+                    <p><strong>Factura N°:</strong> #0042</p>
+                </div>
+            </header>
+
+            <!-- DETALLES / LISTA DE ÍTEMS (Patrón de repetición) -->
+            <section class="factura-detalles">
+                <h2>Detalle de Consumo</h2>
+                <div class="tabla-items">
+                    <div class="fila-encabezado">
+                        <span>Cant.</span>
+                        <span>Descripción</span>
+                        <span>P. Unit</span>
+                        <span>Total</span>
+                    </div>
+                    
+                    <!-- Ítem 1 (Componente repetible) -->
+                    <article class="item-fila">
+                        <span class="cant">2</span>
+                        <span class="desc">Hamburguesa Especial</span>
+                        <span class="unit">$25.000</span>
+                        <span class="subtotal-item">$50.000</span>
+                    </article>
+
+                    <!-- Ítem 2 (Componente repetible) -->
+                    <article class="item-fila">
+                        <span class="cant">1</span>
+                        <span class="desc">Combo Familiar</span>
+                        <span class="unit">$45.000</span>
+                        <span class="subtotal-item">$45.000</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- RESUMEN DE LIQUIDACIÓN -->
+            <footer class="factura-resumen">
+                <div class="linea-resumen">
+                    <span>Subtotal:</span>
+                    <span>$95.000</span>
+                </div>
+                <div class="linea-resumen descuento">
+                    <span>Descuento (RIWI10 - 10%):</span>
+                    <span>-$9.500</span>
+                </div>
+                <div class="linea-resumen">
+                    <span>Propina Opcional (10%):</span>
+                    <span>$8.550</span>
+                </div>
+                <div class="linea-resumen">
+                    <span>Impuesto IVA (19%):</span>
+                    <span>$16.245</span>
+                </div>
+                <div class="linea-resumen envio">
+                    <span>Costo de Envío:</span>
+                    <span>$0 (Gratis > $150k)</span>
+                </div>
+                <div class="linea-resumen total-final">
+                    <span>TOTAL A PAGAR:</span>
+                    <span>$110.295</span>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+[ FACTURA RESTAURANTE (UI) ]
+                            |
+   +------------------------+------------------------+
+   |                        |                        |
+[ Header ]             [ Body / Tabla ]         [ Summary / Totales ]
+   |                        |                        |
+   +-- Logo / Nombre        +-- ItemFila (Repetición) +-- Subtotal
+   +-- Fecha / Mesero       |    |                   +-- Descuento Cupon
+                            |    +-- Cantidad        +-- Propina
+                            |    +-- Descripcion     +-- Impuesto IVA
+                            |    +-- Precio Unit.    +-- Costo Envio
+                            |    +-- Total Item      +-- Total Final
+
+
+
+Tabla de subprocesos
+
++-------------------+----------------------------+--------------+-------------------------------------+
+| SubProceso        | Parámetros (Entrada)       | Tipo Retorno | Responsabilidad                     |
++-------------------+----------------------------+--------------+-------------------------------------+
+| CalcularSubtotal  | cant1, prec1, cant2, prec2 | Real         | Suma precio * cantidad de ítems.    |
+| AplicarCupon      | subtotal, cupon            | Real         | Aplica 10% si el cupón es "RIWI10". |
+| CalcularPropina   | baseLiquidacion, flag      | Real         | Calcula 10% de propina opcional.    |
+| CalcularImpuesto  | baseLiquidacion            | Real         | Aplica 19% IVA sobre el neto.       |
+| CalcularEnvio     | subtotal                   | Real         | Tarifa $8000 o gratis si > $150.000 |
++-------------------+----------------------------+--------------+-------------------------------------+
