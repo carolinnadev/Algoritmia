@@ -1,0 +1,12 @@
+Tabla de Traza
+
++---+----------+-------------------+-------+----------------------------------+
+| i | datos[i] | datos[i] > mayor  | mayor | Observación                      |
++---+----------+-------------------+-------+----------------------------------+
+| - |    -     |         -         |   4   | Inicializa mayor con datos[1]    |
+| 1 |    4     | 4 > 4 (Falso)     |   4   | Mantiene valor inicial           |
+| 2 |    9     | 9 > 4 (Verdadero) |   9   | Actualiza mayor a 9              |
+| 3 |    2     | 2 > 9 (Falso)     |   9   | Mantiene 9                       |
+| 4 |    9     | 9 > 9 (Falso)     |   9   | Mantiene 9                       |
+| 5 |    7     | 7 > 9 (Falso)     |   9   | Fin de iteración, el mayor es 9  |
++---+----------+-------------------+-------+----------------------------------+

@@ -1,0 +1,10 @@
+Tabla de Traza (Entradas de prueba: 50, 30, 0)
+
++--------+-------+--------------+---------------+-----------------+----------------------------------+
+| Vuelta | monto |  monto <> 0  | totalRetirado | cantidadRetiros | Salida / Acción                  |
++--------+-------+--------------+---------------+-----------------+----------------------------------+
+| Inicio |   -   |      -       |       0       |        0        | Inicializa variables             |
+|   1    |  50   |  Verdadero   |      50       |        1        | Pide el siguiente monto          |
+|   2    |  30   |  Verdadero   |      80       |        2        | Pide el siguiente monto          |
+|   3    |   0   |    Falso     |      80       |        2        | Sale del ciclo y muestra totales |
++--------+-------+--------------+---------------+-----------------+----------------------------------+

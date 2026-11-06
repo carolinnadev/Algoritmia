@@ -1,0 +1,9 @@
+Tabla de Traza (Entradas de prueba: "1111", "1234")
+
++---------+---------+----------------+-------------------+-----------------------------------+
+| Intento |  clave  | clave = "1234" | ingresadoConExito | Condicion Mientras                |
++---------+---------+----------------+-------------------+-----------------------------------+
+| Inicio  |    -    |       -        |       Falso       | Verdadero                         |
+|    1    | "1111"  |     Falso      |       Falso       | Verdadero (continúa al intento 2) |
+|    2    | "1234"  |   Verdadero    |     Verdadero     | Falso (termina ciclo, concede ok) |
++---------+---------+----------------+-------------------+-----------------------------------+
