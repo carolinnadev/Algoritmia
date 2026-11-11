@@ -51,3 +51,8 @@ Cafe_Origen_Algoritmia/
     ├── analitica.js        # Núcleo de funciones optimizadas (Set, Map, punteros, ventana)
     ├── medir.js            # Instrumentación y conteo de operaciones elementales
     └── reporte.js          # Consola ejecutiva de salida para el motor v1.0
+
+
+Clona este repositorio o descarga los archivos:
+   ```bash
+   git clone [https://github.com/carolinnadev/Cafe_Origen_Algoritmia.git](https://github.com/carolinnadev/Cafe_Origen_Algoritmia.git)
