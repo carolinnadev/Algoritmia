@@ -92,3 +92,19 @@ Durante las pruebas en el laboratorio (`src/laboratorio.js`), se evidenció que 
 1. **Reordenamiento nocturno de 10.000 libros:** No apto para algoritmos básicos por su alto costo temporal. Se requiere un algoritmo avanzado de *Divide y Vencerás*.
 2. **Inserción diaria de libros nuevos:** **Insertion Sort** es la opción óptima, ya que aprovecha que el catálogo histórico ya está ordenado.
 3. **Listas pequeñas de exhibición (ej. 20 libros):** Cualquiera de los tres algoritmos responde de manera instantánea (< 1 ms).
+
+# Bitácora Final - Libro Abierto v1.0
+**Proyecto:** Red de Bibliotecas del Valle de Aburrá  
+**Resumen del Ciclo de Desarrollo (12 MiniRetos):**
+1. **Estantería digital:** Generación masiva de 10.000 libros con validación de unicidad mediante `Set` y ISBN en formato `string`.
+2. **Búsqueda lineal:** Implementación propia de búsqueda por título, autor y palabras clave con conteo de comparaciones.
+3. **Búsqueda binaria:** Versiones iterativa y recursiva sobre catálogos ordenados, logrando $O(\log n)$.
+4. **Libro Abierto v0.1:** Consolidación del primer buscador integrado con tabla de decisión técnica.
+5. **Bubble Sort:** Primer algoritmo propio de ordenamiento con optimización de salida temprana.
+6. **Selección e Inserción:** Análisis comparativo del comportamiento frente a estados iniciales (casi ordenado, invertido).
+7. **Estabilidad:** Demostración empírica de cómo Bubble e Insertion preservan el orden de claves iguales, a diferencia de Selection.
+8. **Laboratorio v0.2:** Medición experimental del crecimiento cuadrático $O(n^2)$ al duplicar volúmenes.
+9. **Merge Sort:** Algoritmo estable basado en *Divide y Vencerás* con rendimiento garantizado $O(n \log n)$.
+10. **Quick Sort:** Ordenamiento en el lugar y manejo del peor caso cuadrático mediante selección de pivote aleatorio.
+11. **Top-K y Autocompletar:** Combinación de ordenamiento avanzado con búsqueda binaria de límites inferiores para sugerencias instantáneas.
+12. **Libro Abierto v1.0:** Lanzamiento oficial integrando todos los módulos sin dependencias de funciones nativas de ordenamiento.

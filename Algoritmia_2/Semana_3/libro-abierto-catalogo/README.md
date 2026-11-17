@@ -54,3 +54,26 @@ libro-abierto-catalogo/
 │   └── catalogo.js      # Buscador integrado principal
 ├── bitacora.md          # Documentación técnica, trazas y conclusiones
 └── README.md            # Documentación del proyecto
+
+# 📚 Libro Abierto - Catálogo v1.0 [Lanzamiento Oficial]
+
+Sistema definitivo de gestión, búsqueda y ordenamiento de alta eficiencia para la red de cinco bibliotecas comunitarias del Valle de Aburrá. Desarrollado íntegramente desde cero sin utilizar las funciones nativas de ordenamiento del lenguaje.
+
+---
+
+## 📊 Tabla de Algoritmos Implementados
+
+| Algoritmo | Complejidad Promedio | Peor Caso | Estable | Uso en Libro Abierto |
+| :--- | :--- | :--- | :--- | :--- |
+| **Búsqueda Binaria** | $O(\log n)$ | $O(\log n)$ | N/A | Consultas por ISBN y Autocompletar |
+| **Bubble Sort** | $O(n^2)$ | $O(n^2)$ | Sí | Demostración académica y listas diminutas |
+| **Insertion Sort** | $O(n^2)$ | $O(n^2)$ | Sí | Inserción optimizada de libros diarios |
+| **Merge Sort** | $O(n \log n)$ | $O(n \log n)$ | Sí | Reordenamiento nocturno y copias estables |
+| **Quick Sort** | $O(n \log n)$ | $O(n^2)$ | No | Ordenamiento general en memoria restringida |
+
+---
+
+## 🛠️ Instrucciones de Ejecución
+Ejecuta la demostración completa del catálogo v1.0:
+```bash
+node src/catalogo.js

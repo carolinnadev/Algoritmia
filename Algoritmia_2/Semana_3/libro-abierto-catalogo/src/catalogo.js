@@ -36,3 +36,56 @@ console.log(`   - Encontrado: ${resBin.libro ? 'Sí' : 'No'} | Comparaciones: ${
 const resPalabra = buscarPorPalabra(libros, "soledad");
 console.log(`🔍 Búsqueda Lineal por Palabra ("soledad"):`);
 console.log(`   - Coincidentes: ${resPalabra.resultados.length} | Comparaciones: ${resPalabra.comparaciones}`);
+
+const { mergeSort } = require('./ordenamiento');
+
+// MiniReto 11: Top-K de más prestados
+function topPrestados(libros, k) {
+    const comparadorPrestamosDesc = (a, b) => b.prestamos - a.prestamos;
+    const ordenados = mergeSort(libros, comparadorPrestamosDesc);
+    return ordenados.slice(0, k);
+}
+
+// Búsqueda binaria para la primera posición con prefijo coincidente
+function primeraPosicionPrefijo(titulosOrdenados, prefijo) {
+    let inicio = 0;
+    let fin = titulosOrdenados.length - 1;
+    let resultado = -1;
+    const p = prefijo.toLowerCase().trim();
+
+    while (inicio <= fin) {
+        const medio = Math.floor((inicio + fin) / 2);
+        const tituloActual = titulosOrdenados[medio].titulo.toLowerCase();
+
+        if (tituloActual.startsWith(p)) {
+            resultado = medio;
+            fin = medio - 1; // Buscar más a la izquierda para encontrar la primera ocurrencia
+        } else if (tituloActual < p) {
+            inicio = medio + 1;
+        } else {
+            fin = medio - 1;
+        }
+    }
+    return resultado;
+}
+
+function autocompletar(librosOrdenadosPorTitulo, prefijo, max = 5) {
+    if (!prefijo || prefijo.trim() === "") return [];
+    
+    const indiceInicio = primeraPosicionPrefijo(librosOrdenadosPorTitulo, prefijo);
+    if (indiceInicio === -1) return [];
+
+    const sugerencias = [];
+    const p = prefijo.toLowerCase().trim();
+
+    for (let i = indiceInicio; i < librosOrdenadosPorTitulo.length; i++) {
+        const titulo = librosOrdenadosPorTitulo[i].titulo;
+        if (titulo.toLowerCase().startsWith(p)) {
+            sugerencias.push(titulo);
+            if (sugerencias.length >= max) break;
+        } else {
+            break;
+        }
+    }
+    return sugerencias;
+}
