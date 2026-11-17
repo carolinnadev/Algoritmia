@@ -29,3 +29,25 @@ Si las estaciones se insertan en orden estrictamente ascendente (ej. de 10 a 90)
 | **Pila (Stack)** | Gestionar llamadas en DFS | $O(1)$ push/pop |
 | **Set** | Evitar ciclos y registrar visitados | $O(1)$ búsqueda |
 | **Map** | Relacionar vecinos, padres y aristas | $O(1)$ acceso por clave |
+
+# Bitácora de Desarrollo Final - Ruta Paisa v1.0
+**Módulo:** Integración, Algoritmos de Grafos Dirigidos y Simulacro de Entrevista Technical  
+
+## 1. Rúbrica de Simulacro de Entrevista Técnica
+- **Auto-evaluación / Observaciones:**
+  - *Fortaleza:* Explicación fluida en voz alta de las limitaciones de tiempo $O(n^2)$ de la fuerza bruta frente al Map/Set $O(n)$.
+  - *Oportunidad de Mejora:* Formular preguntas sobre restricciones de entrada (ej. duplicados en múltiples días) antes de proponer el diseño.
+
+## 2. Resumen de Construcción de la Semana (12 MiniRetos)
+1. **Estación Base:** Modelado jerárquico mediante Árbol General.
+2. **Índice BST:** Inserción y búsqueda $O(\log n)$ por código de estación.
+3. **Recorridos:** Inorden para ordenamiento, Preorden para copia/exportación, Postorden para liberación.
+4. **Consultas de Rango:** Poda de subárboles irrelevantes en BST y análisis del árbol degenerado.
+5. **Grafo No Dirigido:** Representación con Lista de Adyacencia para estaciones de transbordo.
+6. **Recorrido DFS:** Componentes conectados y estaciones aisladas por cierres.
+7. **Recorrido BFS:** Camino más corto en número de paradas con mapa de padres.
+8. **Planificador v0.2:** CLI de consultas con transbordos y validación BST.
+9. **Simulacro I (Duplicados):** Set con clave compuesta `tarjeta|estacion|hora` en $O(n)$.
+10. **Simulacro II (Demanda):** Ventana deslizante para hora pico en $O(n)$ sin recálculos.
+11. **Mantenimiento sin Ciclos:** Grafo dirigido, detección de ciclos y ordenamiento topológico.
+12. **Sustentación v1.0:** Suite de pruebas y lanzamiento oficial.

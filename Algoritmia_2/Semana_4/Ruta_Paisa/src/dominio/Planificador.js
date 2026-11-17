@@ -1,29 +1,38 @@
+const { crearIndiceRed } = require('./indice');
 const { construirRed } = require('./red');
-const { ArbolBusqueda } = require('./ArbolBusqueda');
+const { PlanMantenimiento } = require('../retos/mantenimiento');
 
-// Reutilizamos el árbol de estaciones del Día 1
-const estacionesPiloto = [
-    { codigo: 50, nombre: "San Antonio" }, { codigo: 30, nombre: "Caribe" },
-    { codigo: 70, nombre: "Poblado" }, { codigo: 20, nombre: "Bello" },
-    { codigo: 40, nombre: "Hospital" }, { codigo: 60, nombre: "Exposiciones" },
-    { codigo: 80, nombre: "Itagüí" }, { codigo: 10, nombre: "Niquía" },
-    { codigo: 25, nombre: "Acevedo" }, { codigo: 35, nombre: "Universidad" },
-    { codigo: 45, nombre: "Parque Berrío" }, { codigo: 52, nombre: "Cisneros" },
-    { codigo: 56, nombre: "Estadio" }, { codigo: 65, nombre: "Industriales" },
-    { codigo: 90, nombre: "La Estrella" }, { codigo: 27, nombre: "Andalucía" },
-    { codigo: 29, nombre: "Santo Domingo" }, { codigo: 54, nombre: "Suramericana" },
-    { codigo: 58, nombre: "Floresta" }, { codigo: 59, nombre: "San Javier" }
-];
-
-const indice = new ArbolBusqueda();
-estacionesPiloto.forEach(e => indice.insertar(e.codigo, e.nombre));
-
+const indice = crearIndiceRed();
 const grafo = construirRed();
 
-// Argumentos de terminal: node src/planificador.js <origen> <destino> [--cerradas cod1,cod2]
 const args = process.argv.slice(2);
+
+// 1. Comando especial para el diagnóstico del Plan de Mantenimiento
+if (args.includes('--mantenimiento')) {
+    console.log('\n🛠️  DIAGNÓSTICO DEL PLAN DE MANTENIMIENTO (Grafo Dirigido)');
+    console.log('---------------------------------------------------------');
+
+    const pm = new PlanMantenimiento();
+    pm.agregarDependencia('T1', 'T2');
+    pm.agregarDependencia('T2', 'T4');
+    pm.agregarDependencia('T5', 'T3');
+    pm.agregarDependencia('T3', 'T4');
+    pm.agregarDependencia('T4', 'T6');
+
+    const resCiclo = pm.detectarCiclo();
+    if (resCiclo.tieneCiclo) {
+        console.log(`⚠️  ¡ERROR EN PLAN! Ciclo detectado: ${resCiclo.ciclo.join(' ➔ ')}`);
+    } else {
+        console.log('✅ Plan de mantenimiento libre de ciclos.');
+        console.log(`📋 Orden topológico de ejecución: ${pm.obtenerOrdenEjecucion().join(' ➔ ')}`);
+    }
+    process.exit(0);
+}
+
+// 2. Planificador de viajes normal por terminal
 if (args.length < 2) {
-    console.log('❌ Uso: node src/planificador.js <origen> <destino> [--cerradas 56]');
+    console.log('❌ Uso: node src/dominio/planificador.js <origen> <destino> [--cerradas cod1,cod2]');
+    console.log('       node src/dominio/planificador.js --mantenimiento');
     process.exit(1);
 }
 
@@ -36,20 +45,20 @@ if (idxCerradas !== -1 && args[idxCerradas + 1]) {
     args[idxCerradas + 1].split(',').forEach(c => cerradas.add(parseInt(c)));
 }
 
-// Validaciones con el índice BST
+// Validaciones con el índice BST del Día 1
 const valOrigen = indice.buscar(origen);
 const valDestino = indice.buscar(destino);
 
 if (!valOrigen.estacion) {
-    console.log(`❌ Error: La estación de origen con código ${origen} no existe.`);
+    console.log(`❌ Error: La estación de origen con código ${origen} no existe en el índice.`);
     process.exit(1);
 }
 if (!valDestino.estacion) {
-    console.log(`❌ Error: La estación de destino con código ${destino} no existe.`);
+    console.log(`❌ Error: La estación de destino con código ${destino} no existe en el índice.`);
     process.exit(1);
 }
 
-// Cálculo de la ruta con BFS
+// Cálculo de la ruta óptima mediante BFS
 const ruta = grafo.rutaMasCorta(origen, destino, cerradas);
 
 if (!ruta) {

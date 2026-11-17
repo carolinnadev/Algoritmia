@@ -26,3 +26,21 @@ node src/indice.js
 | **Pila (Stack)** | Gestionar llamadas en DFS | $O(1)$ push/pop |
 | **Set** | Evitar ciclos y registrar visitados | $O(1)$ búsqueda |
 | **Map** | Relacionar vecinos, padres y aristas | $O(1)$ acceso por clave |
+
+## 🛠️ Tabla de Decisiones Técnicas
+
+| Problema del Cliente | Estructura / Algoritmo Elegido | Alternativa Descartada | Complejidad | Justificación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Indexación de estaciones** | BST (Árbol Binario de Búsqueda) | Lista Lineal | $O(\log n)$ | Permite búsquedas por código y consultas por rango con poda. |
+| **Modelado de red de transporte** | Grafo (Lista de Adyacencia) | Matriz de Adyacencia | $O(V + E)$ | Optimiza memoria en redes dispersas ($20$ vértices, $21$ aristas). |
+| **Ruta con menos paradas** | BFS (Breadth-First Search) | DFS | $O(V + E)$ | BFS explora por niveles, garantizando la menor cantidad de aristas en grafos sin peso. |
+| **Detección de cobros dobles** | Set con clave compuesta | Búsqueda lineal anidada | $O(n)$ | La búsqueda en Set toma $O(1)$, reduciendo la comprobación a una sola pasada. |
+| **Ventana de mayor demanda** | Ventana Deslizante | Doble ciclo repetitivo | $O(n)$ | Reutiliza la suma restando el elemento saliente y sumando el entrante. |
+| **Secuencia de obras sin bloqueos** | Ordenamiento Topológico (DFS) | Ordenamiento por prioridad | $O(V + E)$ | Resuelve la jerarquía de dependencias en grafos dirigidos acíclicos (DAG). |
+
+---
+
+## 💻 Ejecución de la Suite de Pruebas y Comandos
+Para ejecutar las pruebas del proyecto:
+```bash
+node pruebas/todo.js
