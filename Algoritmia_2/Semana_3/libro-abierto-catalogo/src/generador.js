@@ -38,3 +38,18 @@ function generarCatalogo(n) {
 }
 
 module.exports = { generarCatalogo };
+
+
+function generarCatalogoCasiOrdenado(n) {
+    const { generarCatalogo } = require('./generador'); // o usar la función interna
+    let libros = generarCatalogo(n);
+    // Ordenamos inicialmente por año
+    libros.sort((a, b) => a.anio - b.anio);
+    // Descolocamos un 5% de los elementos al final para simular llegadas recientes desordenadas
+    for (let i = 0; i < Math.floor(n * 0.05); i++) {
+        const idx1 = libros.length - 1 - i;
+        const idx2 = Math.floor(Math.random() * 10);
+        [libros[idx1], libros[idx2]] = [libros[idx2], libros[idx1]];
+    }
+    return libros;
+}

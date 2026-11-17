@@ -23,3 +23,34 @@ libro-abierto-catalogo/
 │   └── catalogo.js    # Buscador integrado y reporte de rendimiento
 ├── bitacora.md        # Documentación técnica, trazas y tablas comparativas
 └── README.md          # Documentación del proyecto
+
+
+# 📚 Libro Abierto - Catálogo v0.2
+
+Sistema de gestión, búsqueda y ordenamiento eficiente para la red de cinco bibliotecas comunitarias del Valle de Aburrá. En esta versión v0.2 se incorporan algoritmos de ordenamiento básico implementados desde cero, funciones de comparación desacopladas, análisis de estabilidad y un laboratorio completo de rendimiento.
+
+---
+
+## 🚀 Funcionalidades Principales
+- **Generador con Estados Especiales:** Creación de catálogos bajo distintos escenarios iniciales (aleatorio, ordenado, invertido y casi ordenado).
+- **Bubble Sort Optimizado:** Ordenamiento por intercambio adyacente con parada temprana para optimizar el mejor caso.
+- **Selection Sort:** Ordenamiento por selección del elemento mínimo con mínimo número de intercambios.
+- **Insertion Sort:** Ordenamiento por inserción directa, altamente eficiente para volúmenes casi ordenados.
+- **Comparadores Compuestos y Decoradores:** Funciones de ordenamiento por año, autor/título de manera alfabética avanzada (`localeCompare`) y la función inversora `invertir()`.
+- **Laboratorio de Rendimiento:** Comparativa automatizada de tiempos, conteo de operaciones y validación de correctitud frente al método nativo `sort`.
+
+---
+
+## 🛠️ Estructura del Proyecto
+```text
+libro-abierto-catalogo/
+├── src/
+│   ├── muestra.js       # Muestra de referencia inicial (8 libros)
+│   ├── generador.js     # Generador masivo y de estados especiales
+│   ├── explorar.js      # Script de análisis estadístico
+│   ├── busqueda.js      # Algoritmos de búsqueda lineal y binaria
+│   ├── ordenamiento.js  # Módulo de Bubble, Selection, Insertion y comparadores
+│   ├── laboratorio.js   # Laboratorio de rendimiento comparativo (v0.2)
+│   └── catalogo.js      # Buscador integrado principal
+├── bitacora.md          # Documentación técnica, trazas y conclusiones
+└── README.md            # Documentación del proyecto

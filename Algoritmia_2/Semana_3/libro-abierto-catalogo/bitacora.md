@@ -50,3 +50,45 @@ La búsqueda binaria asume estrictamente que los datos están ordenados de forma
 | **Búsqueda por Título** | No | Búsqueda Lineal | $O(n)$ |
 | **Búsqueda por Autor** | No | Búsqueda Lineal (Múltiples resultados) | $O(n)$ |
 | **Búsqueda por Palabra clave** | No | Búsqueda Lineal (`indexOf` / subcadenas) | $O(n)$ |
+
+
+# Bitácora de Desarrollo - Libro Abierto v0.2
+**Módulo:** Algoritmos de Ordenamiento Básico (Bubble Sort, Selection Sort, Insertion Sort)  
+**Proyecto:** Libro Abierto (Red de Bibliotecas del Valle de Aburrá)  
+
+---
+
+## 1. MiniReto 5: Bubble Sort y Optimización de Salida Temprana
+
+### Análisis del Algoritmo
+Bubble Sort compara elementos adyacentes y los intercambia si están invertidos. El elemento mayor "bota" o asciende hacia la última posición en cada pasada.
+- **Peor caso $O(n^2)$:** Ocurre con catálogos en orden inverso.
+- **Mejor caso $O(n)$ (con optimización):** Gracias a la bandera de salida temprana (`huboIntercambio`), si una pasada completa no realiza ningún intercambio, el algoritmo detecta que el arreglo ya está ordenado y detiene los ciclos de inmediato.
+
+---
+
+## 2. MiniReto 6: Selection Sort e Insertion Sort
+
+### Comportamiento según el Estado Inicial
+1. **Insertion Sort:** Es extremadamente eficiente con datos **casi ordenados**, ya que el ciclo interno de desplazamiento apenas se ejecuta, acercándose a un rendimiento lineal $O(n)$.
+2. **Selection Sort:** Realiza siempre la misma cantidad de comparaciones matemáticas sin importar si el arreglo ya está ordenado o invertido, ya que busca estrictamente el mínimo en el subarreglo restante. Sin embargo, destaca por hacer el **menor número de intercambios** físicos de memoria en comparación con los otros dos.
+
+---
+
+## 3. MiniReto 7: Ordenamiento por Criterios Múltiples y Estabilidad
+
+### Experimento de Estabilidad
+- **Algoritmos Estables (Bubble Sort e Insertion Sort):** Conservan el orden relativo original de los elementos que poseen claves equivalentes. Si ordenamos por autor y dos libros tienen el mismo autor, respeta el orden en el que venían originalmente (por ejemplo, su título).
+- **Algoritmos Inestables (Selection Sort):** Al seleccionar el valor mínimo y reubicarlo mediante un intercambio directo a distancia, puede alterar el orden relativo de elementos idénticos.
+
+---
+
+## 4. MiniReto 8: Laboratorio de Rendimiento y Complejidad $O(n^2)$
+
+### Análisis de Duplicación de Datos ($n \times 2$)
+Durante las pruebas en el laboratorio (`src/laboratorio.js`), se evidenció que al duplicar el tamaño del volumen de datos ($n$), el tiempo de ejecución de los algoritmos básicos se multiplica aproximadamente por **cuatro** ($2^2 = 4$), confirmando empíricamente su complejidad cuadrática $O(n^2)$.
+
+### Recomendaciones de Uso para la Red de Bibliotecas
+1. **Reordenamiento nocturno de 10.000 libros:** No apto para algoritmos básicos por su alto costo temporal. Se requiere un algoritmo avanzado de *Divide y Vencerás*.
+2. **Inserción diaria de libros nuevos:** **Insertion Sort** es la opción óptima, ya que aprovecha que el catálogo histórico ya está ordenado.
+3. **Listas pequeñas de exhibición (ej. 20 libros):** Cualquiera de los tres algoritmos responde de manera instantánea (< 1 ms).
